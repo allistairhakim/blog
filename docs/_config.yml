@@ -22,8 +22,8 @@ title: Allistair's Blog
 email: allistair.hakim@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Awesome blog description. Something something hacking.
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "https://allistairhakim.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://allistair.space" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  allistairhakim
 
 # Build settings
