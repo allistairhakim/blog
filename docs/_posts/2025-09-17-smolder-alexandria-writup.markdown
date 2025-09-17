@@ -11,9 +11,8 @@ First, I tested some vault searches and payloads to test for common vulnerabilit
 
 **Gathering Info**
 I tested which characters were allowed and which weren't allowed using a simple Python script. I first ran the website through Burp Suite proxy, tried to send a vault search, and captured the request to retrieve the request information. Once done, I made a simple Python script to try every ASCII character and output the raw response and whether it was blocked or not. I outputted this to an excel sheet for easy viewing.
-![Blacklisted EXCEL]({{ '/assets/img/smolder-alexandria-0.png' | relative_url }})
 
-We can see that the following characters are not allowed:
+We noted that the following characters were not allowed, everything else was:
 ```
 "
 &
@@ -22,6 +21,7 @@ We can see that the following characters are not allowed:
 `
 |
 ```
+
 
 So, looking through different command injection payloads and ruling out those using blacklisted characters, I decided on using `${payload}`. I confirmed it worked by searching `{echo an}`, and saw the results were the same as we got with just searching up `an`. This meant that whatever was used to search through the vault executed our payload, and searched using the output of the execution (in this case `an`) and returned the results as normal.
 
