@@ -27,7 +27,7 @@ url: "https://allistairhakim.github.io" # the base hostname & protocol for your 
 github_username:  allistairhakim
 
 # Build settings
-theme: b2a3e8/jekyll-theme-console
+remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
