@@ -7,10 +7,10 @@ categories: web
 `Smolder Alexandria` is a web challenge whose main functionality we can access is a a log look up system. Based on the search, it returns a series of logs corresponding to that search (essentially a grep). We needed to find a way to access `flag.txt` and the data within it to solve the challenge.
 
 **Preliminary Testing**
-First, I tested some vault searches and payloads to test for common vulnerabilities. First, I tried to test for SQL injections and Command Injections. I tried `'` but it doesn't return anything quite interesting, but when I try using the character \` in for example, \`whoami\`, I find that the character is blocked. A blacklist can sometimes point to a vulnerability that was found and attempted to be patched, so I focused on finding ways to command inject while bypassing the blacklist.
+First, I tested some vault searches and payloads to test for common vulnerabilities. First, I tried to test for SQL injections and Command Injections. I some SQL payloads but they didn't return anything quite interesting, but when I tried using the character \` in for example, \`whoami\`, I found that the character was blocked. A blacklist can sometimes point to a vulnerability that was found and attempted to be patched, so I focused on finding ways to command inject while bypassing the blacklist.
 
 **Gathering Info**
-I tested which characters were allowed and which weren't allowed using a simple Python script. I first ran the website through Burp Suite proxy, tried to send a vault search, and captured the request to retrieve the request information. Once done, I made a simple Python script to try every ASCII character and output the raw response and whether it was blocked or not. I outputted this to an excel sheet for easy viewing.
+I tested which characters were allowed and which weren't allowed using a simple Python script. I first ran the website through Burp Suite proxy, sent a vault search, and captured the request to retrieve information on how to make the request myself (you could also more simply just open the network tab on Chrome). Once done, I made a simple Python script to try searching for every ASCII character and output the raw response and whether it was blocked or not. I outputted this to an excel sheet for easy viewing.
 
 We noted that the following characters were not allowed, everything else was:
 ```
@@ -21,8 +21,7 @@ We noted that the following characters were not allowed, everything else was:
 `
 |
 ```
-
-
+&nbsp;
 So, looking through different command injection payloads and ruling out those using blacklisted characters, I decided on using `${payload}`. I confirmed it worked by searching `{echo an}`, and saw the results were the same as we got with just searching up `an`. This meant that whatever was used to search through the vault executed our payload, and searched using the output of the execution (in this case `an`) and returned the results as normal.
 
 ***Trying stuff out***
