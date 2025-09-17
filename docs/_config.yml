@@ -27,12 +27,9 @@ url: "https://allistair.space" # the base hostname & protocol for your site, e.g
 github_username:  allistairhakim
 
 markdown: kramdown
-highlighter: rouge
 kramdown:
-  input: GFM          # GitHub-flavored Markdown (triple backticks, tables, etc.)
-  syntax_highlighter_opts:
-    block:
-      line_numbers: false   # set true if you want line numbers by default
+  input: GFM
+highlighter: rouge
       
 # Build settings
 remote_theme: b2a3e8/jekyll-theme-console
