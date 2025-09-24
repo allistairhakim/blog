@@ -18,8 +18,6 @@ categories: web
 /* .post-content img.responsive-inline { display: inline-block; vertical-align: middle; margin: 0.5rem 0; } */
 </style>
 
-<div class="post-content">
-
 <img class="responsive" alt="Picture of challenge" src="{{ '/assets/img/smolder-alexandria-3.png' | relative_url }}" />
 # Introduction
 `Smolder Alexandria` is a web challenge whose main accessible functionality is a log look-up system (vault). Based on the search, it returns a series of logs corresponding to that search (essentially like `grep`). We needed to find a way to access `flag.txt` and the data within it to solve the challenge.
@@ -59,5 +57,3 @@ This meant the error stream was leaking into the logs! I implemented a simple so
 It was a bit disappointing to see how simple the solution was compared to the approaches we were attempting, but overall it was a very fun challenge!
 
 **Flag: csawctf{5m0ld3r_bUrN_1mm0l473_R463}**
-
-</div>
