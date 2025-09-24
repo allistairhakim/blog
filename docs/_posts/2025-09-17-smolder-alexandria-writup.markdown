@@ -4,7 +4,23 @@ title:  "CSAW Quals 2025: Smolder Alexandria Writeup"
 date:   2025-09-17 12:30:09 -0400
 categories: web
 ---
-<img src="{{ '/assets/img/smolder-alexandria-3.png' | relative_url }}" alt="Picture of challenge" style="max-width:100%;height:auto;display:block;margin:0.75rem auto;" />
+<!-- Per-post responsive image rules: images inside .post-content will scale to container and be centered -->
+<style>
+/* limit scope to this post's content */
+.post-content img.responsive {
+  display: block;          /* put the image on its own line so it can be centered */
+  margin: 1rem auto;       /* center horizontally and give a little vertical breathing room */
+  max-width: 100%;         /* never exceed the width of the container */
+  height: auto;            /* keep aspect ratio */
+}
+
+/* if you prefer images to sit inline with text, replace `display: block` with `display: inline-block` */
+/* .post-content img.responsive-inline { display: inline-block; vertical-align: middle; margin: 0.5rem 0; } */
+</style>
+
+<div class="post-content">
+
+<img class="responsive" alt="Picture of challenge" src="{{ '/assets/img/smolder-alexandria-3.png' | relative_url }}" />
 # Introduction
 `Smolder Alexandria` is a web challenge whose main accessible functionality is a log look-up system (vault). Based on the search, it returns a series of logs corresponding to that search (essentially like `grep`). We needed to find a way to access `flag.txt` and the data within it to solve the challenge.
 
@@ -34,12 +50,14 @@ Txaber, Nash, Saketh, and I worked on solutions involving ***which*** results we
 Meanwhile, I observed that the digits (0-9) did have unique result signatures, so I worked on a similar solution that converted each character in the flag to a three-digit equivalent which I could use to determine the flag. However, I ran into problems because some required packages were not installed on the system.
 
 While working on this solution, I noticed that attempting to execute a non-existent command caused one of the returned logs to contain an error about that command. For example, when I tried to execute `somerandomcommand`, a log revealed:
-<img src="{{ '/assets/img/smolder-alexandria-1.png' | relative_url }}" alt="Running somerandomcommand" style="max-width:100%;height:auto;display:block;margin:0.75rem auto;" />
+<img class="responsive" alt="Running somerandomcommand" src="{{ '/assets/img/smolder-alexandria-1.png' | relative_url }}" />
 
 This meant the error stream was leaking into the logs! I implemented a simple solution: I executed the contents of `flag.txt` as a command and obtained the flag from the output. I ran `${${awk 1 flag.txt}}`, retrieved the flag, and submitted it.
-<img src="{{ '/assets/img/smolder-alexandria-2.png' | relative_url }}" alt="Getting the flag" style="max-width:100%;height:auto;display:block;margin:0.75rem auto;" />
+<img class="responsive" alt="Getting the flag" src="{{ '/assets/img/smolder-alexandria-2.png' | relative_url }}" />
 
 # Conclusion
 It was a bit disappointing to see how simple the solution was compared to the approaches we were attempting, but overall it was a very fun challenge!
 
 **Flag: csawctf{5m0ld3r_bUrN_1mm0l473_R463}**
+
+</div>
